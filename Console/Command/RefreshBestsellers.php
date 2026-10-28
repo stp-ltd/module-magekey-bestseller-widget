@@ -39,7 +39,7 @@ class RefreshBestsellers extends \Symfony\Component\Console\Command\Command
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         try {
             $this->bestsellersReport->refresh();
@@ -47,5 +47,7 @@ class RefreshBestsellers extends \Symfony\Component\Console\Command\Command
         } catch (\Exception $e) {
             $output->writeln("<error>" . $e->getMessage() . "</error>");
         }
+
+        return 0;
     }
 }
